@@ -18,7 +18,7 @@ const ServiceCards = () => {
         },
 
         {
-            _id: 1,
+            _id: 3,
             name: "Teeth Whitening",
             img: teeth
         },

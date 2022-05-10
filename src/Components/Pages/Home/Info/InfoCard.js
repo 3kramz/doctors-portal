@@ -1,7 +1,7 @@
 import React from 'react';
 
 const InfoCard = ({img, bg, cardTitle}) => {
-    console.log(img)
+  
     return (
         <div className={`card lg:card-side bg-gradient-to-r ${bg} p-5 shadow-xl text-white`}>
             <figure>
