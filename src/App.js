@@ -8,6 +8,7 @@ import Review from './Components/Pages/Reviews/Reviews'
 import Appointent from './Components/Pages/Appointment/Appointment'
 import Contact from './Components/Pages/Contact/Contact'
 import Login from './Components/Pages/Login/Login'
+import Signup from './Components/Pages/Login/Signup'
 import firebase from './firebase.init'
 
 console.log(firebase)
@@ -24,6 +25,7 @@ function App() {
         <Route path="review" element={<Review />} />
         <Route path="contact" element={<Contact />} />
         <Route path="login" element={<Login />} />
+        <Route path="signup" element={<Signup />} />
        
       </Routes>
     </div>
