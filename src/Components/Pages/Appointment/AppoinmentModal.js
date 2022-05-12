@@ -24,7 +24,7 @@ const AppoinmentModal = ({ treatment, date, setTreatment }) => {
             <input type="checkbox" id="Appointment-modal" className="modal-toggle" />
             <div className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
-                    <label for="Appointment-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <label htmlFor="Appointment-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="font-bold text-lg text-secondary">Book appoinment for {name} on {format(date, 'PP')}</h3>
                     <form onSubmit={handleSubmit} className='grid grid-cols-1 gap-3 justify-items-center mt-2'>
                        

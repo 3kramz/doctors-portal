@@ -8,7 +8,9 @@ import Review from './Components/Pages/Reviews/Reviews'
 import Appointent from './Components/Pages/Appointment/Appointment'
 import Contact from './Components/Pages/Contact/Contact'
 import Login from './Components/Pages/Login/Login'
+import firebase from './firebase.init'
 
+console.log(firebase)
 
 function App() {
   return (
