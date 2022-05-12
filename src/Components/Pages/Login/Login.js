@@ -1,17 +1,27 @@
 import React from 'react';
 import auth from '../../../firebase.init';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 
 const Login = () => {
 
-    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const onSubmit = data => {
 
-        console.log(data)
-    };
-
+    const onSubmit = data => signInWithEmailAndPassword(data.email, data.password);
+ 
+    if (loading || gLoading) { return <button className="btn loading"></button> }
+    let signInError;
+    if(error || gError){
+        signInError= <p className='text-red-500'><small>{error?.message || gError?.message }</small></p>
+    }
 
     return (
         <div className='flex h-screen justify-center items-center'>
@@ -73,7 +83,7 @@ const Login = () => {
                                 {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                             </label>
                         </div>
-
+{signInError}
                         <input className='btn w-full max-w-xs text-white' type="submit" value="Login" />
 
 
