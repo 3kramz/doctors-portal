@@ -2,6 +2,7 @@ import React from 'react';
 import auth from '../../../firebase.init';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
 
@@ -16,12 +17,15 @@ const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
 
     const onSubmit = data => signInWithEmailAndPassword(data.email, data.password);
- 
-    if (loading || gLoading) { return <button className="btn loading"></button> }
+
+    if (loading || gLoading) { return <button className="btn loading "></button> }
+
     let signInError;
-    if(error || gError){
-        signInError= <p className='text-red-500'><small>{error?.message || gError?.message }</small></p>
+    if (error || gError) {
+        signInError = <p className='text-red-500'><small>{error?.message || gError?.message}</small></p>
     }
+
+    if(user|| gUser){console.log(user || gUser)}
 
     return (
         <div className='flex h-screen justify-center items-center'>
@@ -56,7 +60,6 @@ const Login = () => {
                             <label className="label">
                                 {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
                                 {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
-
                             </label>
                         </div>
                         <div className="form-control w-full max-w-xs">
@@ -83,22 +86,10 @@ const Login = () => {
                                 {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                             </label>
                         </div>
-{signInError}
+                        {signInError}
                         <input className='btn w-full max-w-xs text-white' type="submit" value="Login" />
-
-
-
-
                     </form>
-
-
-
-
-
-
-
-
-
+                    <p><small>New to Doctors Portal ? <Link className='text-primary' to="/signup">Create Account </Link></small></p>
                     <div className="divider">OR</div>
                     <button
                         onClick={() => signInWithGoogle()}

@@ -1,6 +1,6 @@
 import React from 'react';
 import auth from '../../../firebase.init';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
@@ -14,14 +14,19 @@ const Login = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
 
+    const [updateProfile, updating, uError] = useUpdateProfile(auth);
+
     const { register, formState: { errors }, handleSubmit } = useForm();
 
-    const onSubmit = data => createUserWithEmailAndPassword(data.email, data.password);
+    const onSubmit =async data => {
+        await   createUserWithEmailAndPassword(data.email, data.password)
+        await updateProfile({ displayName:data.name })
+    }
 
-    if (loading || gLoading) { return <button className="btn loading"></button> }
+    if (loading || gLoading || updating) { return <button className="btn loading"></button> }
 
     let signInError;
-    if (error || gError) {
+    if (error || gError || uError) {
         signInError = <p className='text-red-500'><small>{error?.message || gError?.message}</small></p>
     }
 
