@@ -1,4 +1,3 @@
-
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from './Components/Shared/Navbar';
@@ -10,23 +9,28 @@ import Contact from './Components/Pages/Contact/Contact'
 import Login from './Components/Pages/Login/Login'
 import Signup from './Components/Pages/Login/Signup'
 import firebase from './firebase.init'
+import PrivateRoute from './Components/Shared/PrivateRoute';
 
 console.log(firebase)
 
 function App() {
   return (
-    <div  className='px-12 max-w-7xl mx-auto'>
+    <div className='px-12 max-w-7xl mx-auto'>
       <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="about" element={<About />} />
-        <Route path="appointment" element={<Appointent />} />
+        <Route path="appointment" element={
+          <PrivateRoute>
+            <Appointent />
+          </PrivateRoute>
+        } />
         <Route path="review" element={<Review />} />
         <Route path="contact" element={<Contact />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
-       
+
       </Routes>
     </div>
   );

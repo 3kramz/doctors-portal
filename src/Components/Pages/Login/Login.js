@@ -16,8 +16,8 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
-    
-       useEffect( () =>{
+
+    useEffect(() => {
         if (user || gUser) {
             navigate(from, { replace: true });
         }
@@ -34,7 +34,7 @@ const Login = () => {
         signInError = <p className='text-red-500'><small>{error?.message || gError?.message}</small></p>
     }
 
-    if(user|| gUser){console.log(user || gUser)}
+    if (user || gUser) { console.log(user || gUser) }
 
     return (
         <div className='flex h-screen justify-center items-center'>
