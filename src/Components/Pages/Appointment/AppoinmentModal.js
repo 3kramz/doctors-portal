@@ -13,10 +13,10 @@ const AppoinmentModal = ({ treatment, date, setTreatment }) => {
         const appointment = {
             date: format(date, 'PP'),
             _id,
-            serviceName:name,
-            slot :e.target.slot.value,
-            name: e.target.name.value,
-            email: e.target.email.value,
+            treatmentName: name,
+            slot: e.target.slot.value,
+            patientname: user.displayName,
+            email: user.email,
             phone: e.target.phone.value
         }
 
@@ -33,14 +33,14 @@ const AppoinmentModal = ({ treatment, date, setTreatment }) => {
                     <label htmlFor="Appointment-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="font-bold text-lg text-secondary">Book appoinment for {name} on {format(date, 'PP')}</h3>
                     <form onSubmit={handleSubmit} className='grid grid-cols-1 gap-3 justify-items-center mt-2'>
-                       
-                        <select className="select select-primary w-full max-w-xs" readOnly >
 
-                            {slots?.map((slot, index)=> <option key={index} value={slot}>{slot}</option>)}
+                        <select className="select select-primary w-full max-w-xs" required readOnly >
+
+                            {slots?.map((slot, index) => <option key={index} value={slot}>{slot}</option>)}
                         </select>
-                        <input type="text" name="name" value={user?.displayName || ''} placeholder="Your Name" className="input input-bordered w-full max-w-xs" readOnly/>
-                        <input type="email" name="email" value={user?.email || ''} placeholder="Email Address" className="input input-bordered w-full max-w-xs" readOnly/>
-                        <input type="text" name="phone" placeholder="Phone Number" className="input input-bordered w-full max-w-xs" required/>
+                        <input type="text" name="name" value={user?.displayName || ''} placeholder="Your Name" className="input input-bordered w-full max-w-xs" readOnly disabled/>
+                        <input type="email" name="email" value={user?.email || ''} placeholder="Email Address" className="input input-bordered w-full max-w-xs" readOnly disabled/>
+                        <input type="text" name="phone" placeholder="Phone Number" className="input input-bordered w-full max-w-xs" required />
                         <input type="submit" value="Submit" className="btn btn-primary text-white w-full max-w-xs" />
 
                     </form>
