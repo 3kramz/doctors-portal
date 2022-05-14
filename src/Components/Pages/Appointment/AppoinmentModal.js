@@ -19,9 +19,16 @@ const AppoinmentModal = ({ treatment, date, setTreatment }) => {
             email: user.email,
             phone: e.target.phone.value
         }
-
-        console.log(appointment)
-
+        fetch('http://localhost:5000/booking',{
+            method: 'POST', // or 'PUT'
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(appointment),
+          })
+        .then(res=>res.json())
+        .then(data=>console.log(data))
+        
         setTreatment(null)
     }
 
