@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import auth from '../../../firebase.init';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import useToken from '../../../Hooks/useToken'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
@@ -16,12 +17,14 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
-
+ 
+    const [ token ] = useToken(user || gUser)
     useEffect(() => {
-        if (user || gUser) {
+        if (token) {
             navigate(from, { replace: true });
         }
-    }, [user, gUser, from, navigate])
+    }, [token, from, navigate])
+   
 
     const { register, formState: { errors }, handleSubmit } = useForm();
 
