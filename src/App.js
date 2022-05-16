@@ -9,7 +9,6 @@ import Contact from './Components/Pages/Contact/Contact'
 import Login from './Components/Pages/Login/Login'
 import Signup from './Components/Pages/Login/Signup'
 import PrivateRoute from './Components/Shared/PrivateRoute';
-
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
