@@ -4,6 +4,7 @@ import { Link, Outlet } from 'react-router-dom'
 const Dashboard = () => {
     return (
         <> 
+        <hr/>
         <label  tabIndex="1" for="dashboard-drawer"  className="flex justify-end btn btn-ghost lg:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                 </label>
@@ -14,7 +15,7 @@ const Dashboard = () => {
             <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content ">
 
-                <h2 className='text-5xl'>DASHBOARD</h2>
+                <h2 className='text-3xl text-center'>DASHBOARD</h2>
                 <Outlet />
 
 
