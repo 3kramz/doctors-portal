@@ -8,10 +8,11 @@ import Appointent from './Components/Pages/Appointment/Appointment'
 import Contact from './Components/Pages/Contact/Contact'
 import Login from './Components/Pages/Login/Login'
 import Signup from './Components/Pages/Login/Signup'
-import firebase from './firebase.init'
 import PrivateRoute from './Components/Shared/PrivateRoute';
 
-console.log(firebase)
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="signup" element={<Signup />} />
 
       </Routes>
+        <ToastContainer />
     </div>
   );
 }
