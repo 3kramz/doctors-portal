@@ -11,6 +11,9 @@ import Signup from './Components/Pages/Login/Signup'
 import PrivateRoute from './Components/Shared/PrivateRoute';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Dashboard from './Components/Pages/Dashboard/Dashboard';
+import MyAppointment from './Components/Pages/Dashboard/MyAppointment';
+import MyReview from './Components/Pages/Dashboard/MyReview';
 
 
 function App() {
@@ -20,19 +23,30 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="appointment" element={
+        <Route path="/about" element={<About />} />
+        <Route path="/appointment" element={
           <PrivateRoute>
             <Appointent />
           </PrivateRoute>
         } />
-        <Route path="review" element={<Review />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="login" element={<Login />} />
-        <Route path="signup" element={<Signup />} />
+
+        <Route path="/dashboard" element={
+          <PrivateRoute>
+            <Dashboard/>
+          </PrivateRoute>
+        } >
+          <Route index element={<MyAppointment/>}></Route>
+          <Route path="/dashboard/review" element={<MyReview/>}></Route>
+        </Route>
+
+
+        <Route path="/review" element={<Review />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
 
       </Routes>
-        <ToastContainer />
+      <ToastContainer />
     </div>
   );
 }
