@@ -17,7 +17,7 @@ const Navbar = () => {
         <li><Link to="/review">Reviews</Link></li>
         <li><Link to="/contact">Contact Us</Link></li>
         {user && <li><Link to="/dashboard">Dashboard</Link></li>}
-        <li>{user ? <p onClick={() => signOut(auth)}>Sign Out</p> : <Link to="/login">Login</Link>}</li>
+        <li>{user ? <p onClick={() =>{ signOut(auth);localStorage.removeItem('accessToken')}}>Sign Out</p> : <Link to="/login">Login</Link>}</li>
     </>
     return (
         <div className="navbar bg-base-100">
