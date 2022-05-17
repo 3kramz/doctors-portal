@@ -11,7 +11,7 @@ const AllUsers = () => {
         }
     }).then(res => res.json()))
 
-    if (isLoading) { return <button classNameName="btn loading "></button> }
+    if (isLoading) { return <button className="btn loading "></button> }
 
 
     const makeAdmin = (email) => {
@@ -21,10 +21,16 @@ const AllUsers = () => {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             }
         })
-            .then(res => res.json())
+            .then(res => {
+                    if(res.status===403){
+                            toast.error("Failed to make Admin")
+                    }              
+                return res.json()})
             .then(data => {
-                toast.success('Admin Made Successfully')
+                if(data.modifiedCount>0){
+                    toast.success('Admin Made Successfully')
                 refetch()
+                }
             })
 
     }
