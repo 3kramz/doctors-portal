@@ -5,7 +5,7 @@ const Dashboard = () => {
     return (
         <> 
         <hr/>
-        <label  tabIndex="1" for="dashboard-drawer"  className="flex justify-end btn btn-ghost lg:hidden">
+        <label  tabIndex="1" htmlFor="dashboard-drawer"  className="flex justify-end btn btn-ghost lg:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                 </label>
 
@@ -21,7 +21,7 @@ const Dashboard = () => {
 
             </div>
             <div className="drawer-side">
-                <label for="dashboard-drawer" className="drawer-overlay"></label>
+                <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
                 <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
                     {/* <!-- Sidebar content here --> */}
                     <li><Link to="/dashboard">My Appointments</Link></li>
