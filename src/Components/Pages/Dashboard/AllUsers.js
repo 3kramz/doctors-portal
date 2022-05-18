@@ -57,8 +57,8 @@ const AllUsers = () => {
                             <tr key={user._id}>
                                 <th>{i + 1}</th>
                                 <td>{user.email}</td>
-                                <td>{user.role !=="Admin" && <button onClick={() => makeAdmin(user.email)}class="btn n-primary btn-xs">Make Admin</button>}</td>
-                                <td><button class="btn n-primary btn-}xs">Remove User</button></td>
+                                <td>{user.role !=="Admin" && <button onClick={() => makeAdmin(user.email)} className="btn n-primary btn-xs">Make Admin</button>}</td>
+                                <td><button  className="btn n-primary btn-}xs">Remove User</button></td>
 
                             </tr>)
                     }

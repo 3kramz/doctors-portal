@@ -29,7 +29,7 @@ const AddDoctor = () => {
                 if (result.success) {
                     doctor.iamge = result.data.url
 
-                    fetch('http://localhost:5000/admin', {
+                    fetch('http://localhost:5000/doctor', {
                         method: 'POST', // or 'PUT'
                         headers: {
                             'Content-Type': 'application/json',
@@ -41,8 +41,9 @@ const AddDoctor = () => {
                         .then(data => {
                             if (data.insertedId) {
                                 toast.success(`New Doctor is Added`)
+                                reset()
                             }
-                            else { toast.error(`Failed to Add new Doctor`) }
+                            else { toast.error(`Failed to Add new Doctor`);reset() }
 
                         })
                 }
